@@ -3,12 +3,30 @@
   <head>
     <title>GoodGames</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+    <div class="nav">
+      <h1>GoodGames</h1>
+      <ul id="nav-options">
+        <% if logged_in? %>
+          <li><%= link_to 'Account', current_user %></li>
+          <li><%= link_to 'Log Out', signout_path, method: 'delete' %></li>
+        <% else %>
+          <li><%= link_to 'Register', register_path %></li>
+          <li><%= link_to 'Sign In', signin_path %></li>
+        <% end %>
+        <li>
+          <%= form_for @search do |f| %>
+            <%= f.label :search %>
+            <%= f.text_field :search %>
+            <%= f.submit %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
     <%= yield %>
   </body>
 </html>
