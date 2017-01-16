@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       flash[:success] = "Account Successfully Created"
-      redirect_to "/"
+      redirect_to user
     else
       @errors = user.errors.full_messages
       render 'new'
