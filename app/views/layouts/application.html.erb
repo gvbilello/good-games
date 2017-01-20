@@ -19,6 +19,12 @@
           <li><%= link_to 'Sign In', signin_path %></li>
         <% end %>
         <li>
+          <%= form_for @games do |f| %>
+            <%= f.label :search %>
+            <%= f.text_field :search %>
+
+            <%= f.submit %>
+          <% end %>
         </li>
       </ul>
     </div>
